@@ -1,0 +1,36 @@
+@use 'bootstrap/scss/bootstrap';
+@use 'bootstrap-icons/font/bootstrap-icons';
+
+:root {
+  --azure-mist: #EBF4F5ff;
+  --alice-blue: #E2ECF2ff;
+  --alice-blue-2: #D9E5EEff;
+  --pale-sky: #D0DDEBff;
+  --pale-sky-2: #C7D5E7ff;
+  --pale-sky-3: #BECEE4ff;
+  --powder-blue: #B5C6E0ff;
+
+  --text-dark: #2A3B4E;
+  --text-soft: #3E546C;
+  --border-light: rgba(181, 198, 224, 0.5);
+  --hover-bg: rgba(181, 198, 224, 0.25);
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  letter-spacing: normal;
+  padding: 20px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  background: linear-gradient(145deg,
+    var(--azure-mist) 0%,
+    var(--alice-blue) 25%,
+    var(--alice-blue-2) 50%,
+    var(--pale-sky) 75%,
+    var(--powder-blue) 100%);
+}
+
+
