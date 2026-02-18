@@ -1,42 +1,41 @@
 <div class="d-flex flex-row gap-2">
-  <select class="form-select form-select-sm w-25">
-    <option>Выбор диска</option>
+  <select class="form-select form-select-sm w-25"
+          (change)="onChangeDrive($event)">
+    <option value="">Выбор диска</option>
+    @for(drive of drives(); track drives().length){
+      <option [value]="drive">{{drive}}</option>
+    }
   </select>
 
   <div class="current-path">
-    <span>Какой-то путь ,fk,kf ,kf ,kf </span>
+    <span>{{currentPath()}}</span>
   </div>
 
-  <button class="btn-up">
+  <button class="btn-up" (click)="goToParent()">
     <i class="bi bi-arrow-up"></i>
   </button>
 </div>
 
 <div class="scrollbar overflow-y-auto">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item list-group-item-action">
-      <span>icon Folder name</span>
-      <span>size date 17.02.2026</span>
-    </li>
-    <li class="list-group-item list-group-item-action">
-      <span>icon Folder name</span>
-      <span>size date 17.02.2026</span>
-    </li>
-    <li class="list-group-item list-group-item-action">
-      <span>icon Folder name</span>
-      <span>size date 17.02.2026</span>
-    </li>
-  </ul>
-</div>
+  @if (loading) {
+    <div class="text-center py-5">Загрузка...</div>
+  } @else {
+    <ul class="list-group list-group-flush">
+      @for(file of files(); track file.path){
+        <li (click)="onSelectFile(file)" (dblclick)="openDirectory(file)" [class.active]="selectedFile()?.path === file.path" class="list-group-item list-group-item-action">
+          <div class="d-flex align-items-center">
+            @if(file.isDirectory){
+              <i class="bi bi-folder-fill me-2"></i>
+            } @else {
+              <i class="bi bi-file-earmark-fill me-2"></i>
+            }
+            <span>{{file.name}}</span>
+          </div>
+          <span>{{ file.formattedSize }} •
+            {{ file.lastUpdate | date:'dd:MM HH:mm'}}</span>
+        </li>
+      }
+    </ul>
+  }
 
-<div class="d-flex flex-row justify-content-center gap-2 mt-auto">
-  <button class="btn-action">
-    <i class="bi bi-copy"></i>&nbsp;Copy
-  </button>
-  <button class="btn-action">
-    <i class="bi bi-arrows-move"></i>&nbsp;Move
-  </button>
-  <button class="btn-action">
-    <i class="bi bi-arrows-move"></i>&nbsp;Delete
-  </button>
 </div>

@@ -1,11 +1,16 @@
 import {Expose, Type} from 'class-transformer';
 
-@Expose()
+
 export class FileItemDTO{
+  @Expose()
   name?: string;
+  @Expose()
   path?: string;
+  @Expose()
   isDirectory?: boolean;
+  @Expose()
   size?: number;
+  @Expose()
   @Type(() => Date)
   lastUpdate?: Date;
 

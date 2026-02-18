@@ -1,6 +1,27 @@
-<h1 >FileManager</h1>
+<h1>Менеджер файлов</h1>
 
 <div class="d-flex flex-row flex-grow-1 overflow-hidden gap-4 ">
-  <app-panel></app-panel>
-  <app-panel></app-panel>
+  <app-panel #leftPanel
+             [panelSide]="'left'"
+             [activePanel]="activePanel()"
+             [selectedFile]="selectedFile()"
+             (activate)="setActivePanel($event)"
+             (fileSelected)="setSelectedFile($event)"></app-panel>
+  <app-panel #rightPanel
+             [panelSide]="'right'"
+             [activePanel]="activePanel()"
+             [selectedFile]="selectedFile()"
+             (activate)="setActivePanel($event)"
+             (fileSelected)="setSelectedFile($event)"></app-panel>
+</div>
+<div class="d-flex flex-row justify-content-center gap-2 mt-auto">
+  <button class="btn-action" (click)="copy()">
+    <i class="bi bi-copy"></i>&nbsp;Копировать
+  </button>
+  <button class="btn-action" (click)="move()">
+    <i class="bi bi-arrows-move"></i>&nbsp;Переместить
+  </button>
+  <button class="btn-action" (click)="delete()">
+    <i class="bi bi-arrows-move"></i>&nbsp;Удалить
+  </button>
 </div>

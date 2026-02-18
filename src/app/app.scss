@@ -7,3 +7,18 @@
   gap: 10px;
   overflow: hidden;
 }
+
+.btn-action{
+  height: 35px;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+  padding: 14px 32px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale(1.08);
+  }
+}
